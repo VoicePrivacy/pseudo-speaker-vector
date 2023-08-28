@@ -1,0 +1,274 @@
+
+<!-- saved from url=(0041)https://yaden2018.github.io/multispeaker/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>TTSSpeechBERT
+</title>
+    <link rel="shortcut icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
+    <link rel="icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
+    <link rel="apple-touch-icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
+</head>
+<body>
+<script type="text/javascript" async="" src="./PROSODY PRE-TRAINING FOR IMPROVING EXPRESSIVENESS IN NEURAL TTS/analytics.js.download"></script><script async="" src="./PROSODY PRE-TRAINING FOR IMPROVING EXPRESSIVENESS IN NEURAL TTS/js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-125850295-1');
+</script>
+
+<article>
+    <header>
+        <h1>MODELING PSEUDO-SPEAKER WITH UNCERTAINTY FOR SPEAKER ANONYMIZATION</h1>
+    </header>
+</article> 
+ 
+<div><b>Abstract:</b> This paper proposes to exploit the uncertainty estimate of the speaker attributes to anonymize speech utterances. The pseudo-speaker is assumed to follow a Gaussian distribution where the covariance measures the uncertainty of representing the speaker with the mean vector. Given the utterances of a selected cohort speaker set, the pseudo-speaker distribution is estimated by minimizing its divergence from the posterior speaker distributions estimated from the utterances. After that, a pseudo-speaker vector is generated via sampling to provide the pseudo-speaker representation to every single utterance. Our experiments carried out on the datasets provided by the VoicePrivacy Challenge (VPC) demonstrate that the proposed pseudo-speaker vector is effective in de-identification when applied in anonymization.
+</div> 
+
+<br/>
+<br/>
+<br/>
+
+
+Anonymization samples: 
+
+<div>
+    <h3>Masked segment reconstructed by speech BERT with Griffin-Lim vocoder</h3>
+    
+    Sentence 1: <i>There was not a worse vagabond in Shrewsbury than old Barney the piper.</i>
+        <table><tbody><tr>
+            <td>Recording:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/100_121669_000004_000000.ori-gl.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Padded input:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/100_121669_000004_000000.padded-gl.wav">
+                </audio>
+            </td>
+            <td></td>
+			<td>Reconstructed output (w/o pitch prediction training):</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/100_121669_000004_000000-gl-speechBERT.wav">
+                </audio>
+            </td>
+            <td></td>			
+            <td>Reconstructed output (w/ pitch prediction training):</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/100_121669_000004_000000-gl-prosodyBERT.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table>
+    Sentence 2: <i>His name was John Palmer.</i>
+    <table><tbody><tr>
+        <td>Recording:</td>
+        <td>
+            <audio controls="">
+                <source src="wav/1006_135212_000002_000004.ori-gl.wav">
+            </audio>
+        </td>
+        <td></td>
+        <td>Padded input:</td>
+        <td>
+            <audio controls="">
+                <source src="wav/1006_135212_000002_000004.padded-gl.wav">
+            </audio>
+        </td>
+		<td></td>
+			<td>Reconstructed output (w/o pitch prediction training):</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/1006_135212_000002_000004-gl-speechBERT.wav">
+                </audio>
+            </td>
+        <td></td>
+        <td>Reconstructed output (w/ pitch prediction training):</td>
+        <td>
+            <audio controls="">
+                <source src="wav/1006_135212_000002_000004-gl-prosodyBERT.wav">
+            </audio>
+        </td>
+    </tr>
+</tbody></table>
+
+<br/>
+
+The spectrograms of the wav files in Sentence 2 are listed as follows:
+<br/>
+<embed src="spectrogram_html.pdf" width="500" height="650" type="application/pdf">
+<br/>
+The padded segments are marked by yellow rectangular boxes. From the comparison, we can see that the with the proposed pitch prediction training as proposed in this paper, the spectrograms are clearer and closer to the recordings.
+
+<br/>
+<br/>
+<br/>
+
+<h3>LJSpeech</h3>
+<table><tbody><tr>
+    <td>Recording sample:</td>
+    <td>
+        <audio controls="">
+            <source src="wav/LJ/0000000000.wav">
+        </audio>
+    </td>
+    <td></td>
+</tbody></table>
+
+<br/>
+<br/>
+<b>The synthesized speech on LJSpeech for subjective evaluation.</b><br/><br/>
+Three systems are compared:<br/>
+1. Transformer TTS <br/>
+2. Transformer TTS with speech BERT embedding <br/>
+3. Transformer TTS with prosody embedding <br/>
+<br/>
+<br/>
+<table style="margin-left:auto;margin-right:auto;"><tbody><tr>
+    <td colspan="3"><b><i>In-domain synthesized speech synthesis with MelGAN vocoder<i></i></b></td>
+</tr>
+<tr><td></td>
+<td style="text-align:center">Transformer TTS</td>
+<td style="text-align:center">Transformer TTS with speech BERT embedding</td>
+<td style="text-align:center">Transformer TTS with prosody embedding</td>
+    </tr>
+<tr>
+<td><i>Ten days were consumed in these negotiations; but the spirit of vengeance refused to yield.</i></td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/001_transformerTTS.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/001_speechBERT.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/001_prosodyBERT.wav">
+    </audio>
+</td>
+</tr>
+<tr>
+<td><i>The thrall's eyes flashed.</i></td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/002_transformerTTS.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/002_speechBERT.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/002_prosodyBERT.wav">
+    </audio>
+</td>
+</tr>
+<tr>
+<td><i>However loudly outward circumstances might oppose this, he now felt, with a certainty which surprised him, that this work was not his own.</i></td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/003_transformerTTS.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/003_speechBERT.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/003_prosodyBERT.wav">
+    </audio>
+</td>
+</tr>
+</tbody></table>
+
+<br/>
+<br/>
+
+<table style="margin-left:auto;margin-right:auto;"><tbody><tr>
+    <td colspan="3"><b><i>Out-of-domain synthesized speech synthesis with MelGAN vocoder<i></i></b></td>
+</tr>
+<tr><td></td>
+<td style="text-align:center">Transformer TTS</td>
+<td style="text-align:center">Transformer TTS with speech BERT embedding</td>
+<td style="text-align:center">Transformer TTS with prosody embedding</td>
+    </tr>
+<tr>
+<td><i>There is no flooding so far in the downtown area, Hoefer added.</i></td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/001_transformerTTS_news.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/001_speechBERT_news.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/001_prosodyBERT_news.wav">
+    </audio>
+</td>
+</tr>
+<tr>
+<td><i>His statement reiterated his "heartfelt apology to the Irish people".</i></td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/002_transformerTTS_news.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/002_speechBERT_news.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/002_prosodyBERT_news.wav">
+    </audio>
+</td>
+</tr>
+<tr>
+<td><i>As it turned out, my quarantine home would be the InterContinental Hotel in Sydney's CBD Central Business District.</i></td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/003_transformerTTS_news.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/003_speechBERT_news.wav">
+    </audio>
+</td>
+<td>
+    <audio controls="">
+        <source src="wav/LJ/003_prosodyBERT_news.wav">
+    </audio>
+</td>
+</tr>
+</tbody></table>
+
+<br/>
+<br/>
+
+</div>
+
+</body></html>
