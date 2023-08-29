@@ -34,236 +34,303 @@
 <br/>
 <br/>
 
-
-Anonymization samples: 
-
 <div>
-    <h3>Masked segment reconstructed by speech BERT with Griffin-Lim vocoder</h3>
-    
-    Sentence 1: <i>There was not a worse vagabond in Shrewsbury than old Barney the piper.</i>
-        <table><tbody><tr>
-            <td>Recording:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/100_121669_000004_000000.ori-gl.wav">
-                </audio>
-            </td>
-            <td></td>
-            <td>Padded input:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/100_121669_000004_000000.padded-gl.wav">
-                </audio>
-            </td>
-            <td></td>
-			<td>Reconstructed output (w/o pitch prediction training):</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/100_121669_000004_000000-gl-speechBERT.wav">
-                </audio>
-            </td>
-            <td></td>			
-            <td>Reconstructed output (w/ pitch prediction training):</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/100_121669_000004_000000-gl-prosodyBERT.wav">
-                </audio>
-            </td>
-        </tr>
-    </tbody></table>
-    Sentence 2: <i>His name was John Palmer.</i>
-    <table><tbody><tr>
-        <td>Recording:</td>
-        <td>
-            <audio controls="">
-                <source src="wav/1006_135212_000002_000004.ori-gl.wav">
-            </audio>
-        </td>
-        <td></td>
-        <td>Padded input:</td>
-        <td>
-            <audio controls="">
-                <source src="wav/1006_135212_000002_000004.padded-gl.wav">
-            </audio>
-        </td>
-		<td></td>
-			<td>Reconstructed output (w/o pitch prediction training):</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/1006_135212_000002_000004-gl-speechBERT.wav">
-                </audio>
-            </td>
-        <td></td>
-        <td>Reconstructed output (w/ pitch prediction training):</td>
-        <td>
-            <audio controls="">
-                <source src="wav/1006_135212_000002_000004-gl-prosodyBERT.wav">
-            </audio>
-        </td>
-    </tr>
-</tbody></table>
+<table style="margin-left:auto;margin-right:auto;"><tbody><tr>
+    <td colspan="3"><b><i>Anonymization samples: <i></i></b></td>
+</tr>
+<tr>
+    In the following, samples of four speakers are displayed, two from VCTK and two from LibriSpeech. For each speaker, a recording is presented for reference. Following that, the anonymized speech utterances generated with the baseline and our proposed method are given. As configured by VoicePrivacy Challenge, the speech utterances of an original speaker are anonymized with different cohort speakers when appearing in enrollment and trial. As such, for each speaker, the anonymized speech in enrollment and trial are presented, respectively.
 
-<br/>
+</tr>
+<tr><td></td><td style="text-align:center"><b>Recording</b></td>
+<td style="text-align:right"><b>Baseline</b></td><td></td>
+<td style="text-align:right"><b> Pseudo-speaker vector</b></td><td></td>
+</tr>
+<tr>
+    <td></td><td></td><td style="text-align:center"> Enrollment </td><td style="text-align:center">Trial</td>
+    <td style="text-align:center"> Enrollment </td><td style="text-align:center">Trial</td>
+</tr>
 
-The spectrograms of the wav files in Sentence 2 are listed as follows:
-<br/>
-<embed src="spectrogram_html.pdf" width="500" height="650" type="application/pdf">
-<br/>
-The padded segments are marked by yellow rectangular boxes. From the comparison, we can see that the with the proposed pitch prediction training as proposed in this paper, the spectrograms are clearer and closer to the recordings.
+<tr>
+<td>VCTK-p234</td>
+<td>
+    p234_089_mic2
+    <audio controls="">
+        <source src="wav/recording/p234_089_mic2.wav">
+    </audio>
+</td>
+<td>
+    p234_089_mic2
+    <audio controls="">
+        <source src="wav/baseline/enrollment/p234_089_mic2.wav">
+    </audio>
+</td>
+<td>
+    p234_005_mic2
+    <audio controls="">
+        <source src="wav/baseline/trial/p234_005_mic2.wav">
+    </audio>
+</td>
+<td>
+    p234_089_mic2
+    <audio controls="">
+        <source src="wav/pseudo_spkr_vec/enrollment/p234_089_mic2.wav">
+    </audio>
+</td>
+<td>
+    p234_005_mic2
+    <audio controls="">
+        <source src="wav/pseudo_spkr_vec/trial/p234_005_mic2.wav">
+    </audio>
+</td>
+</tr>
 
-<br/>
-<br/>
-<br/>
+<tr>
+    <td>VCTK-p234</td>
 
-<h3>LJSpeech</h3>
-<table><tbody><tr>
-    <td>Recording sample:</td>
     <td>
+        p234_152_mic2
         <audio controls="">
-            <source src="wav/LJ/0000000000.wav">
+            <source src="wav/recording/p234_152_mic2.wav">
         </audio>
     </td>
-    <td></td>
-</tbody></table>
+    <td>
+        p234_152_mic2
+        <audio controls="">
+            <source src="wav/baseline/enrollment/p234_152_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p234_024_mic2
+        <audio controls="">
+            <source src="wav/baseline/trial/p234_024_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p234_152_mic2
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/enrollment/p234_152_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p234_024_mic2
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/trial/p234_024_mic2.wav">
+        </audio>
+    </td>
+</tr>
 
-<br/>
-<br/>
-<b>The synthesized speech on LJSpeech for subjective evaluation.</b><br/><br/>
-Three systems are compared:<br/>
-1. Transformer TTS <br/>
-2. Transformer TTS with speech BERT embedding <br/>
-3. Transformer TTS with prosody embedding <br/>
-<br/>
-<br/>
-<table style="margin-left:auto;margin-right:auto;"><tbody><tr>
-    <td colspan="3"><b><i>In-domain synthesized speech synthesis with MelGAN vocoder<i></i></b></td>
-</tr>
-<tr><td></td>
-<td style="text-align:center">Transformer TTS</td>
-<td style="text-align:center">Transformer TTS with speech BERT embedding</td>
-<td style="text-align:center">Transformer TTS with prosody embedding</td>
-    </tr>
 <tr>
-<td><i>Ten days were consumed in these negotiations; but the spirit of vengeance refused to yield.</i></td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/001_transformerTTS.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/001_speechBERT.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/001_prosodyBERT.wav">
-    </audio>
-</td>
+    <td>VCTK-p237</td>
+    <td>
+        p237_175_mic2
+        <audio controls="">
+            <source src="wav/recording/p237_175_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_175_mic2
+        <audio controls="">
+            <source src="wav/baseline/enrollment/p237_175_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_004_mic2
+        <audio controls="">
+            <source src="wav/baseline/trial/p237_004_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_175_mic2
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/enrollment/p237_175_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_004_mic2
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/trial/p237_004_mic2.wav">
+        </audio>
+    </td>
 </tr>
-<tr>
-<td><i>The thrall's eyes flashed.</i></td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/002_transformerTTS.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/002_speechBERT.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/002_prosodyBERT.wav">
-    </audio>
-</td>
-</tr>
-<tr>
-<td><i>However loudly outward circumstances might oppose this, he now felt, with a certainty which surprised him, that this work was not his own.</i></td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/003_transformerTTS.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/003_speechBERT.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/003_prosodyBERT.wav">
-    </audio>
-</td>
-</tr>
-</tbody></table>
 
-<br/>
-<br/>
+<tr>
+    <td>VCTK-p237</td>
+    <td>
+        p237_262_mic2 
+        <audio controls="">
+            <source src="wav/recording/p237_262_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_262_mic2
+        <audio controls="">
+            <source src="wav/baseline/enrollment/p237_262_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_007_mic2
+        <audio controls="">
+            <source src="wav/baseline/trial/p237_007_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_262_mic2
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/enrollment/p237_262_mic2.wav">
+        </audio>
+    </td>
+    <td>
+        p237_007_mic2
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/trial/p237_007_mic2.wav">
+        </audio>
+    </td>
+</tr>
 
-<table style="margin-left:auto;margin-right:auto;"><tbody><tr>
-    <td colspan="3"><b><i>Out-of-domain synthesized speech synthesis with MelGAN vocoder<i></i></b></td>
-</tr>
-<tr><td></td>
-<td style="text-align:center">Transformer TTS</td>
-<td style="text-align:center">Transformer TTS with speech BERT embedding</td>
-<td style="text-align:center">Transformer TTS with prosody embedding</td>
-    </tr>
+
+
 <tr>
-<td><i>There is no flooding so far in the downtown area, Hoefer added.</i></td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/001_transformerTTS_news.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/001_speechBERT_news.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/001_prosodyBERT_news.wav">
-    </audio>
-</td>
+    <td>LibriSpeech-260</td>
+    <td>
+        260-123286-0009
+        <audio controls="">
+            <source src="wav/recording/260-123286-0009.wav">
+        </audio>
+    </td>
+    <td>
+        260-123286-0009
+        <audio controls="">
+            <source src="wav/baseline/enrollment/260-123286-0009.wav">
+        </audio>
+    </td>
+    <td>
+        260-123288-0007
+        <audio controls="">
+            <source src="wav/baseline/trial/260-123288-0007.wav">
+        </audio>
+    </td>
+    <td>
+        260-123286-0009
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/enrollment/260-123286-0009.wav">
+        </audio>
+    </td>
+    <td>
+        260-123288-0007
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/trial/260-123288-0007.wav">
+        </audio>
+    </td>
 </tr>
+
+
+
 <tr>
-<td><i>His statement reiterated his "heartfelt apology to the Irish people".</i></td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/002_transformerTTS_news.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/002_speechBERT_news.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/002_prosodyBERT_news.wav">
-    </audio>
-</td>
+    <td>LibriSpeech-260</td>
+    <td>
+        260-123286-0017
+        <audio controls="">
+            <source src="wav/recording/260-123286-0017.wav">
+        </audio>
+    </td>
+    <td>
+        260-123286-0017
+        <audio controls="">
+            <source src="wav/baseline/enrollment/260-123286-0017.wav">
+        </audio>
+    </td>
+    <td>
+        260-123288-0012
+        <audio controls="">
+            <source src="wav/baseline/trial/260-123288-0012.wav">
+        </audio>
+    </td>
+    <td>
+        260-123286-0017
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/enrollment/260-123286-0017.wav">
+        </audio>
+    </td>
+    <td>
+        260-123288-0012
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/trial/260-123288-0012.wav">
+        </audio>
+    </td>
 </tr>
+
+
 <tr>
-<td><i>As it turned out, my quarantine home would be the InterContinental Hotel in Sydney's CBD Central Business District.</i></td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/003_transformerTTS_news.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/003_speechBERT_news.wav">
-    </audio>
-</td>
-<td>
-    <audio controls="">
-        <source src="wav/LJ/003_prosodyBERT_news.wav">
-    </audio>
-</td>
+    <td>LibriSpeech-121</td>
+    <td>
+        121-121726-0000
+        <audio controls="">
+            <source src="wav/recording/121-121726-0000.wav">
+        </audio>
+    </td>
+    <td>
+        121-121726-0000
+        <audio controls="">
+            <source src="wav/baseline/enrollment/121-121726-0000.wav">
+        </audio>
+    </td>
+    <td>
+        121-123852-0002
+        <audio controls="">
+            <source src="wav/baseline/trial/121-123852-0002.wav">
+        </audio>
+    </td>
+    <td>
+        121-121726-0000
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/enrollment/121-121726-0000.wav">
+        </audio>
+    </td>
+    <td>
+        121-123852-0002
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/trial/121-123852-0002.wav">
+        </audio>
+    </td>
 </tr>
+
+
+<tr>
+    <td>LibriSpeech-121</td>
+    <td>
+        121-121726-0001
+        <audio controls="">
+            <source src="wav/recording/121-121726-0001.wav">
+        </audio>
+    </td>
+    <td>
+        121-121726-0001
+        <audio controls="">
+            <source src="wav/baseline/enrollment/121-121726-0001.wav">
+        </audio>
+    </td>
+    <td>
+        121-123852-0003
+        <audio controls="">
+            <source src="wav/baseline/trial/121-123852-0003.wav">
+        </audio>
+    </td>
+    <td>
+        121-121726-0001
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/enrollment/121-121726-0001.wav">
+        </audio>
+    </td>
+    <td>
+        121-123852-0003
+        <audio controls="">
+            <source src="wav/pseudo_spkr_vec/trial/121-123852-0003.wav">
+        </audio>
+    </td>
+</tr>
+
+
 </tbody></table>
 
 <br/>
